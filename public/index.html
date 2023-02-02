@@ -1,20 +1,12 @@
 <h1>Hi!</h1>
-<button id="btn">Click Me!</button>
 
 <p>Current number: <span id="number">unknown</span></p>
 
 <script>
-  const main = async () => {
+  setInterval(async () => {
     const response = await fetch('/api/count');
     const { count } = await response.json()
 
     document.querySelector('#number').innerText = count;
-  }
-
-  document.querySelector('#btn').addEventListener('click', async () => {
-    const { count } = await (await fetch('/api/addOne')).json();
-    document.querySelector('#number').innerText = count;
-  })
-
-  main()
+  }, 100)
 </script>
