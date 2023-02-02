@@ -1,22 +1,30 @@
 // server-side data
 // you can think of this like "mongodb"
-let count = 1;
+let count = 2;
 
 
 const express = require('express');
 
 const app = express();
 
-app.use(express.static('./public'));
-app.use(express.json())
+app.get('/', (req, res) => {
 
-app.get('/api/count', (req, res) => {
-  res.json({count});
+  const content = `
+    <h1>Hi!</h1>
+
+    <!-- When we click on this button, navigate to '/addOne' -->
+    <a href="/addOne"><button id="btn">Click Me!</button></a>
+
+    <p>Current number: ${count}</p>
+  `;
+
+  res.send(content);
+
 })
 
-app.get('/api/addOne', (req, res) => {
+app.get('/addOne', (req, res) => {
   count++;
-  res.json({count});
+  res.redirect('/');
 })
 
 

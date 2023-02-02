@@ -1,25 +1,41 @@
-This is a client-side single page application.
+This is server-side rendering.
 
-The page _never_ reloads. The page loads once, and then it's all javascript and
-APIs.
-
-This way of creating web apps is pretty new! It started around 2010 when
-Angular became popular inside Google, and later React was released by Facebook.
+Notice that there is no more static html!
 
 ## Pros
 
-The benefit of doing this this way is that it allows client-side and
-server-side developers to work separately.
+Less client-server communication. Notice we only need one request to load the
+page instead of two!
+
+Less code. About half as much in this place.
+
+Fewer pieces of "state." Before, we had state on the server _and_ the client.
+Now, we only have server-side state.
+
+Faster & simpler for the client -- the server does the work!
+
+Better for SEO. Feeding content to the hungry hungry content hippo (Google).
+
+We can send dynamic content in response to the initial request.
+
+Easier for a small website.
 
 ## Cons
 
-The drawback is that it's more complex, uses less of what the browser can do
-for you for free, and has some dangerous pitfalls for user experience:
+Client and server are tightly coupled. In large software systems, tight
+coupling = ☠️  😵 🪦
 
-- poor accessibility (this app has horrible accessibility)
-- slow initial page load
-- poor SEO performance, because we send an empty HTML page with code, instead
-  of an html page enriched with content
+## Why is Tight Coupling Akin to Death
 
-**Weighing the benefits and drawbacks, this IS/IS NOT the way most companies
-build websites and web applications.**
+This gets into complicated stuff. We are entering the territory of things that
+senior engineers at major tech companies think about.
+
+Communication creates a drag on productivity.
+
+Tech projects are very complicated.
+
+Parallelizing very complicated projects requires a lot of communication.
+
+- building bridges
+- building skyscrapers
+- building google
