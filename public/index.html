@@ -3,10 +3,17 @@
 <p>Current number: <span id="number">unknown</span></p>
 
 <script>
-  setInterval(async () => {
-    const response = await fetch('/api/count');
+  let currentCount = 0;
+  const pollCount = async () => {
+    const response = await fetch(`/api/countSubscribe/${currentCount}`);
     const { count } = await response.json()
 
+    currentCount = count;
+
     document.querySelector('#number').innerText = count;
-  }, 100)
+
+    pollCount();
+  }
+
+  pollCount();
 </script>
